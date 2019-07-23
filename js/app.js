@@ -24,10 +24,12 @@ setInterval(colorChange, 1000);
 /*
   When the user adds a number value to the the inputs, it will change the rgb color on submit
 */
+
 button.addEventListener("click", e => {
   //if the colors value is greater than 255, error message
   let rgbVals = [];
   colors.forEach(function(color) {
+    let val = color.parentElement.firstElementChild.firstElementChild;
     if (
       color.value <= 255 &&
       color.value >= 0 &&
@@ -41,13 +43,12 @@ button.addEventListener("click", e => {
       body.style.backgroundColor = `rgb(${rgbVals[0]}, ${rgbVals[1]}, ${
         rgbVals[2]
       })`;
-      setInterval(function() {
-        color.value = "";
-      }, 3000);
+
+      //Need to find a way to reset the colors, but only when button asks if they want to reset
+      color.value = "";
+      val.style.color = "black";
     } else {
       color.style.border = "red 3px solid";
-      let val = color.parentElement.firstElementChild.firstElementChild;
-      console.log(val);
       val.style.color = "red";
     }
   });
