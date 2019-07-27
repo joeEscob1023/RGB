@@ -2,8 +2,9 @@ const jumbotron = document.querySelector(".jumbotron");
 const body = document.querySelector("body");
 let span = document.querySelector(".input-group-text");
 let colors = document.querySelectorAll(".colors");
-
 const button = document.querySelector(".btn");
+const resetButton = document.querySelector(".reset");
+//resetButton.style.display = "none";
 
 //This function just sets the jumbotron change colors randomly
 function getRandomColor() {
@@ -36,7 +37,7 @@ button.addEventListener("click", e => {
       color.value !== NaN &&
       color.value !== ""
     ) {
-      color.style.border = "green 3px solid";
+      //val.style.color = "green";
 
       rgbvaleus = rgbVals.push(color.value);
 
@@ -45,12 +46,25 @@ button.addEventListener("click", e => {
       })`;
 
       //Need to find a way to reset the colors, but only when button asks if they want to reset
-      color.value = "";
-      val.style.color = "black";
+      // color.value = "";
+      color.style.border = "green 3px solid";
+      button.style.display = "none";
+      val.style.color = "";
+      resetButton.style.display = "block";
     } else {
       color.style.border = "red 3px solid";
       val.style.color = "red";
     }
   });
+  e.preventDefault();
+});
+
+resetButton.addEventListener("click", e => {
+  colors.forEach(function(color) {
+    color.value = "";
+    color.style.border = "";
+  });
+  resetButton.style.display = "none";
+  button.style.display = "block";
   e.preventDefault();
 });
