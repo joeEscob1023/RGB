@@ -37,16 +37,12 @@ button.addEventListener("click", e => {
       color.value !== NaN &&
       color.value !== ""
     ) {
-      //val.style.color = "green";
-
       rgbvaleus = rgbVals.push(color.value);
 
       body.style.backgroundColor = `rgb(${rgbVals[0]}, ${rgbVals[1]}, ${
         rgbVals[2]
       })`;
 
-      //Need to find a way to reset the colors, but only when button asks if they want to reset
-      // color.value = "";
       color.style.border = "green 3px solid";
       button.style.display = "none";
       val.style.color = "";
